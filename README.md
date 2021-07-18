@@ -29,7 +29,7 @@ To use this code, follow the instructions:
 ![Screenshot 2021-07-18 at 8 12 18 PM](https://user-images.githubusercontent.com/67803385/126072250-eea2d2b3-4fc3-4ab1-8f76-91c265fb7bbc.png)
 
 - Use Gifs with keywords or without them!
-![Screenshot 2021-07-18 at 8 16 23 PM](https://user-images.githubusercontent.com/67803385/126072316-d2362816-067c-4f43-81c4-f6a6093fe467.png)
+![Screen Recording 2021-07-18 at 8 39 28 PM](https://user-images.githubusercontent.com/67803385/126072396-a8681d3c-9487-4446-92c6-03f52cc0bfcb.gif)
 
 - Have different greeting message
 ![Screenshot 2021-07-18 at 8 37 02 PM](https://user-images.githubusercontent.com/67803385/126072269-d02bac1d-11a3-45cb-b871-e2813d2372c7.png)
