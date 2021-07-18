@@ -2,6 +2,12 @@ require('dotenv').config()
 
 const { Client, WebhookClient } = require('discord.js')
 
+const ban = require('./commands/ban')
+const gif = require('./commands/gif')
+const kick = require('./commands/kick')
+const announce = require('./commands/announce')
+const randomReplies = require('./commands/randomRepiles')
+
 const client = new Client({
     partials: ['MESSAGE', 'REACTION']
 })
@@ -29,50 +35,18 @@ client.on('message', async (message) => {
             .split(/\s+/)
 
         if(CMD_NAME === 'kick') {
-            if(!message.member.hasPermission('KICK_MEMBERS')) {
-                return message.reply('You do not have permission to use that command!')
-            }
-
-            if(args.length === 0) {
-                return message.reply('Please provide a valid ID')
-            }
-
-            const member = message.guild.members.cache.get(args[0])
-            if(member) {
-                member
-                    .kick()
-                    .then((member) => message.channel.send(`${member} was kicked`))
-                    .catch((err) => message.channel.send('i cannot kick that user :('))
-            } else {
-                message.channel.send('That member not found')
-            }
+            kick(message, args)
         } else if(CMD_NAME === 'ban') {
-            if(!message.member.hasPermission('BAN_MEMBERS')) {
-                return message.reply('You do not have permission to use that Command!')
-            }
-
-            if(args.length === 0) {
-                return message.reply('Please provide a valid ID')
-            }
-
-            try {
-                const user = await message.guild.members.ban(args[0])
-
-                message.channel.send(`${user} - User was banned successfully!`)
-            } catch (err) {
-                console.log(err)
-                message.channel.send('An Error Occured - either I do not have permissions or the user not found!')
-            }
+            ban(message, args)
         } else if(CMD_NAME === 'announce') {
-            console.log(args);
-            const msg = args.join(' ')
-            console.log(msg);
-            webhookClient.send(msg);
+            announce(args, webhookClient)
+        } else if(CMD_NAME === 'gif') {
+            gif(message, args)
         }
     }
 
-    if(message.content === 'Hello') {
-        message.channel.send('Hey there!')
+    if(message.content === 'Hello' || message.content === 'hello' || message.content === 'Hey' || message.content === 'hey' || message.content === 'Hi' || message.content === 'hi' || message.content === 'Hii' || message.content === 'hii' ) {
+        randomReplies(message)
     }
 })
 
